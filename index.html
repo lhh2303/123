@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登陆注册</title>
+    <link href="https://cdn.bootcss.com/font-awesome/5.10.2/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="container">
+    <p>福建十三水</p>           
+        <div class="panel">
+            <div class="content login">
+                <div class="switch">
+                    
+                </div>
+                <form action="">
+                    
+
+                    <input type="text" class="form-control input-md" name="successName" id="username" placeholder="账号" onfocus="this.placeholder=''" onblur="this.placeholder='账号'"/>
+                    
+                    <input type="text" class="form-control input-md" name="successName" id="password" placeholder="密码" onfocus="this.placeholder=''" onblur="this.placeholder='密码'"/>
+                    <a href="index2.html">
+                        <button type="txt" onclick="my()">login</button>
+                        <button type="submit">sign in</button>
+                    </a>
+                </form>
+            </div>
+        </div>
+        
+            
+    </div>
+    
+    
+</body>
+<script>
+function my(){
+    if(document.getElementById("username").value=="" ||document.getElementById("password").value=="")
+    {
+        alert("账号密码不为空 ");
+        retuen;
+    }
+    else{
+        var data = JSON.stringify({
+            "username":document.getElementById("username").value,
+            "password":document.getElementById("password").value
+        });
+        var xhr= new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState==4&&xhr.status==200){
+                var json=JSON.parse(xhr.responseText);
+                localStorage.removeItem("token");
+                localStorage.setItem("token",json.data.token);
+                window.location.href="index2.html";
+                console.log(xhr,responseText);
+            }
+        }
+       xhr.open("POST","https://api.shisanshui.rtxux.xyz/auth/login",true) ;
+       xhr.setRequestHeader("conrnt-type","application/json");
+       xhr.send(data);
+    }
+}
+</script>
+
+
+
+</html>

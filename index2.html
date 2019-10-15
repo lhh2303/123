@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style2.css">
+    <title>Document</title>
+    <script type="text/javascript" src="gundong.js"></script>
+
+    
+<body>
+    <div class="lunbo">
+    <div class="wrapper">
+            <p class="item">赌博有害身体健康</p>
+        <p class="item">珍爱生命，远离软工!</p>
+        <p class="item">Cherish life, away from Software Engineering</p>
+        <p class="item">珍爱生命，远离软工</p>
+    </div>
+    </div>
+<header>
+        
+    </div>
+    <nav>
+        <ul class="ul">
+            <li class="li"><a href="www.baidu.com">Setting</a></li>
+            <li class="li"><a href="www.baidu.com">Info</a></li>
+            <li class="li"><a href="index.html">Exit</a></li>
+            
+        </ul>
+    </nav>
+</header>
+
+<div class="box">
+    <div class="box1"><a href="www.baidu.com">创建房间</a></div>
+    <div class="box1"><a href="www.baidu.com">加入房间</a></div>
+    <div class="box1"><a href="www.baidu.com">排行榜</a></div>
+</div>
+<div class="box">
+        <div class="box1">创建房间</div>
+        <div class="box1">加入房间</div>
+        <div class="box1">排行榜</div>
+    </div>
+    <script>
+            ;(function() {
+                var wrapper  = document.getElementsByClassName('wrapper')[0];
+                var offset = 50
+                var timer;
+                setInterval(function () {
+                if(timer) {
+                    clearInterval(timer);
+                }
+                var step = 1;
+                
+                timer = setInterval(function () {
+                    wrapper.style.transform = 'translateY(-' + (offset + step) + 'px)';
+                    if(step == 50) {
+                    clearInterval(timer);
+                    }
+                    step++;
+                
+                }, 10);
+                
+                offset += 50;
+                console.log('offset', offset)
+                
+                var num = Math.floor(wrapper.offsetHeight / 50)
+                console.log('num==', num)
+                
+                if (! (offset%((num - 1)*50))) {
+                    offset = 0;
+                }
+            
+                }, 2000)
+                
+            })()
+            </script>
+</body>
+
+
+ 
+</html>
